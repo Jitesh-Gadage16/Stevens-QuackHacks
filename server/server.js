@@ -8,8 +8,12 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
 app.use(express.json());
+
+app.use(cors({
+    origin: "http://localhost:5173", // your frontend URL
+    credentials: true
+}));
 
 app.use('/api/auth', require('./routes/authRoutes'));
 // Serve uploaded files statically (optional, useful to access files via URL)
